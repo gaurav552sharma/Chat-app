@@ -43,7 +43,10 @@ export const useChatStore = create((set, get) => ({
       );
       set({ messages: [...messages, res.data] });
     } catch (error) {
-      toast.error(error.response.data.message);
+      console.error("Upload failed:", error);
+      const message =
+        error?.response?.data?.message || "Image too large or failed to send.";
+      toast.error(message);
     }
   },
 
@@ -63,6 +66,7 @@ export const useChatStore = create((set, get) => ({
   },
   unSubscribeFromMessages: () => {
     const socket = useAuthStore.getState().socket;
+    if (socket == null) return;
     socket.off("newMessage");
   },
 
