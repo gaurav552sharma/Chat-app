@@ -33,7 +33,7 @@ export const signup = async (req, res) => {
         _id: newUser._id,
         fullName: newUser.fullName,
         email: newUser.email,
-        profilePicture: newUser.ProfilePicture,
+        ProfilePicture: newUser.ProfilePicture,
       });
     } else {
       return res.status(400).send("Invalid user data");
@@ -70,7 +70,7 @@ export const login = async (req, res) => {
           _id: user._id,
           fullName: user.fullName,
           email: user.email,
-          profilePicture: user.profilePicture,
+          ProfilePicture: user.ProfilePicture,
         });
       } else {
         return res.status(400).send("Invalid credentials");
